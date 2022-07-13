@@ -1,16 +1,48 @@
 import "./App.css";
-import React from "react";
+import React, { useState } from "react";
 import Home from "./pages/Home";
 import Rooms from "./pages/Rooms";
 import SingleRoom from "./pages/SingleRoom";
 import Error from "./pages/Error";
 import { Route, Routes } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { FaCocktail, FaHiking, FaShuttleVan, FaBeer } from "react-icons/fa";
 function App() {
+  let [isOpen, setIsOpen] = useState(false);
+  const handleToggle = () => {
+    isOpen = !isOpen;
+    setIsOpen(isOpen);
+  };
+  const services = [
+    {
+      icon: <FaCocktail />,
+      title: "free cockTail",
+      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, adipisci!",
+    },
+    {
+      icon: <FaHiking />,
+      title: "free Hiking",
+      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, adipisci!",
+    },
+    {
+      icon: <FaShuttleVan />,
+      title: "free Shuttle",
+      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, adipisci!",
+    },
+    {
+      icon: <FaBeer />,
+      title: "free Beer",
+      info: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, adipisci!",
+    },
+  ];
+  const [serviceState] = useState(services); // we ignore 2nd para
+
   return (
     <React.Fragment>
+      <Navbar isOpen={isOpen} handleToggle={handleToggle} />
       <Routes>
         {/* exact is showing that path should be exact mean /rooms also contain /, so it can cause runtime bad exp */}
-        <Route exact path="/" element={<Home />} />
+        <Route exact path="/" element={<Home serviceState={serviceState} />} />
         <Route exact path="/rooms/" element={<Rooms />} />
         {/* here slug is variable, you can name it as you want. This is actually a router parameter which decides which unique info to show. */}
         <Route exact path="/rooms/:slug" element={<SingleRoom />} />

@@ -1,10 +1,5 @@
 import React from "react";
 
-class SingleRoom extends React.Component {
-  state = {};
-  render() {
-    return <>This is Single Room</>;
-  }
+export default function SingleRoom() {
+  return <div>This is from SingleRoom</div>;
 }
-
-export default SingleRoom;
