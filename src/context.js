@@ -76,7 +76,7 @@ class RoomProvider extends React.Component {
 
     this.setState(
       {
-        [name]: value, // This will do type: single OR capacity: 2 ok ok
+        [name]: value, // This will do type: single OR capacity: 2
       },
       this.filterRooms // callBack function which we use to filter according to our need
     );
