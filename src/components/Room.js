@@ -29,7 +29,7 @@ export default Room;
 Room.propTypes = {
   room: PropTypes.shape({
     // as have only one prop so we are checking its types
-    room: PropTypes.string.isRequired, // accessing room
+    name: PropTypes.string.isRequired, // accessing name
     slug: PropTypes.string.isRequired, // slug
     images: PropTypes.arrayOf(PropTypes.string).isRequired, // images
     price: PropTypes.number.isRequired, // price
