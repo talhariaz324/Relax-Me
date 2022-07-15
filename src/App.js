@@ -75,3 +75,27 @@ Then we copy the files of the instructor in our project and then simply make pag
       </Routes>
     </React.Fragment>
     */
+
+/*
+    Context API: state management in react which you can say contains all the info which you need throughout the app.
+    Steps: 
+    1- Create context.js and we create RoomContext there. Which we use to access data in class base mostly like in featureRooms.js
+    2- Create provider in which children shows the wrap of context which we create at the top.
+    3- Create Consumer which is used to access the data. But in functional based component. We can also use the context for accessing as we did in line no 16 of SingleRoom.js
+
+
+NOTE: We can access data using the 3 ways in functional component and 1 way in class base as we did in featureRooms.js
+      3 ways of functional Component are:
+      1- Very preferable way which is using HOOK as we did in SingleRoom.js
+      But we should know the other way also so that whenever we face that code so we should understand
+      2- Room Consumer as I comment in RoomContainer.js
+      3- Using Higher Order Component as I did in RoomContainer.js and in context.js without comment.
+
+
+    Simply after making this context.js we have more few steps to do:
+    1- Go to index.js and wrap the components with Provider which we made in context.js
+    Note: This provider you can use above of any compnonent where you need the data from that partivular context. But we need the RoomContext so we make at the very top.
+    2- Go in the component where you want to use the data of context. As here I go in the featureRooms.js and i do some steps there also:
+        1- static contextType = RoomContext; // contextType is name fixed
+        2- Get data using this.context on right side and on left side you can make according to your requirement
+    */
