@@ -5,7 +5,7 @@ export default function Services({ serviceState }) {
   // we can also define this receiving obj in this same file with same procedure as in app.js
   return (
     <section className="services">
-      <Title title="Services" serviceState={serviceState} />
+      <Title title="Services" />
       <div className="services-center">
         {serviceState.map((item, index) => {
           return (

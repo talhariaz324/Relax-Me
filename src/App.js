@@ -39,6 +39,7 @@ function App() {
 
   return (
     <React.Fragment>
+      {/* We set our navbar at the top because we need it on all pages */}
       <Navbar isOpen={isOpen} handleToggle={handleToggle} />
       <Routes>
         {/* exact is showing that path should be exact mean /rooms also contain /, so it can cause runtime bad exp */}

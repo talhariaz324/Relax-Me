@@ -25,7 +25,7 @@ const Room = memo(({ room }) => {
 });
 
 export default Room;
-// Syntax to use the protypes
+// PropTypes are simply a mechanism that ensures that the passed value is of the correct datatype. This makes sure that we don't receive an error at the very end of our app by the console which might not be easy to deal with.
 Room.propTypes = {
   room: PropTypes.shape({
     // as have only one prop so we are checking its types

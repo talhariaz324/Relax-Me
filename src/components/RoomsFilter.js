@@ -6,7 +6,7 @@ const getUnique = (item, value) => {
   return [...new Set(item.map((item) => item[value]))]; // Set is use to check the array and add only the unique values not do duplication
 };
 const RoomsFilter = ({ rooms }) => {
-  // sorted Rooms which we pass from RoomContainer.js
+  //  Rooms which we pass from RoomContainer.js
   console.log(rooms);
   const context = useContext(RoomContext);
   const {
@@ -116,7 +116,7 @@ const RoomsFilter = ({ rooms }) => {
                 type="checkbox"
                 name="breakfast"
                 id="breakfast"
-                checked={breakfast}
+                checked={breakfast} // This is property which is we are doing to true after checking type in context.js and this is instead of value
                 onChange={handleChange}
               />
               <label htmlFor="breakfast">breakfast</label>
@@ -126,7 +126,7 @@ const RoomsFilter = ({ rooms }) => {
               <input
                 type="checkbox"
                 name="pets"
-                checked={pets}
+                checked={pets} // This is property which is we are doing to true after checking type in context.js and this is instead of value
                 onChange={handleChange}
               />
               <label htmlFor="breakfast">pets</label>

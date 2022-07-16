@@ -13,7 +13,7 @@ const SingleRoom = () => {
     // use the useState for making object and accessing in line no 15
     slug: slug,
   });
-  let { getRoom } = useContext(RoomContext); // Reciving getRoom function
+  let { getRoom } = useContext(RoomContext); // Reciving getRoom function by hook
 
   const room = getRoom(state.slug); // passing slug
 

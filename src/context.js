@@ -39,7 +39,7 @@ class RoomProvider extends React.Component {
     let maxSize = Math.max(...rooms.map((item) => item.size));
     let minSize = Math.min(...rooms.map((item) => item.size));
     this.setState({
-      rooms,
+      rooms, // rooms: rooms as have same name so we write only once it will take updated value
       featuredRooms,
       sortedRooms: rooms,
       loading: false,
@@ -70,21 +70,29 @@ class RoomProvider extends React.Component {
   handleChange = (event) => {
     // calling this function on every filter option... SO this event changes according to it
     const target = event.target;
-    const value = target.type === "checkbox" ? target.checked : target.value; // If we have checkBox then target should be checked otherwise value
-    const name = target.name; // name of target like type i set in filter.js etc.
-    console.log(name, value); // type (name) single (value) --> single is actually type of room
+    /*
+Here we have 2 kind of input fields, 1- Value based 2- CheckBox .... SO we make here condition that if target type is checked then target.checked kar do mean true kar do as here agr hum breakfast par click krtay then ya uss ko true kar day ga or nichay setState ma ja k set kar da ga
+Aur agar value base filter select karay ga (e.g; guests wala jis ma name capacity rakha huwa hum na) to ya target ko value par set karay ga aur setState ma ja kar [name]: value ka mtlb ya ho jay ga  capacity: 2.... So as we are setting state, this will go in state search for capacity and change its value to 2 from 1
+*/
+    const value = target.type === "checkbox" ? target.checked : target.value; // checked property is defined in checkbox input in filter.js
+    const name = target.name; // name of target like breakfast, capacity i set in filter.js etc.
+    console.log(name, value); // capacity (name) 2 (value) --> 2 is actually selected value in filter
 
     this.setState(
       {
-        [name]: value, // This will do type: single OR capacity: 2
+        /*
+         Suppose we select breakfast in filter then it will do ... breakfast: true in state .... Because we are seting the state so it will go upward in the state and check for breakfast and make that value from false to true
+         Suppose we select guest filter then capacity: 2 and go state and update it.
+        */
+        [name]: value, // We are using this [] in name so that we can access the 78 line number name otherwise it cannot reach it
       },
       this.filterRooms // callBack function which we use to filter according to our need
     );
   };
   filterRooms = () => {
     let { rooms, type, capacity, price, maxSize, minSize, breakfast, pets } =
-      this.state; // we destruct the state
-    let tempRooms = [...rooms]; // we store the copy of rooms in tempRoom
+      this.state; // we destruct the state with new filtered value
+    let tempRooms = [...rooms]; // we store the copy of all rooms in tempRoom
     capacity = parseInt(capacity); // making capacity as int
     // filter by type
     if (type !== "all") {

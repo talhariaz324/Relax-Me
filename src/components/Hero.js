@@ -6,5 +6,5 @@ export default function Hero({ children, hero }) {
 }
 
 Hero.defaultProps = {
-  hero: "defaultHero",
+  hero: "defaultHero", // For Showing image as this is defined in css
 };
